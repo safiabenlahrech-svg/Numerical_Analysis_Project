@@ -14,7 +14,7 @@ def bisection_method(a, b, tol, max_iter):
         c = (a + b) / 2
         error = abs(b - a) / 2
         
-        # طباعة النتائج في جدول كما طلب المشروع
+    
         print(f"{i:<10} | {c:<15.8f} | {error:<15.8e}")
 
         # شرط التوقف

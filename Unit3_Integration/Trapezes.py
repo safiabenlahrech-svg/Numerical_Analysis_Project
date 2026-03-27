@@ -1,24 +1,33 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
+# 1. تعريف الدالة الرياضية
 def f(x):
-    # نكتب هنا الدالة المراد تكاملها (مثال: x مربع)
-    return x**2
+    return x**2  # يمكنكِ تغييرها لأي دالة أخرى
 
-def trapezoidal_rule(a, b, n):
-    """
-    a: بداية المجال
-    b: نهاية المجال
-    n: عدد التقسيمات (كلما زاد زادت الدقة)
-    """
-    h = (b - a) / n
-    x = np.linspace(a, b, n + 1)
+# 2. دالة حساب التكامل ورسم المنحنى
+def plot_trapezoidal(a, b, n):
+    x = np.linspace(a, b, 100)
     y = f(x)
     
-    # قانون الشبه منحرف: (h/2) * [f(a) + 2*sum(f(xi)) + f(b)]
-    s = y[0] + y[-1] + 2 * np.sum(y[1:-1])
-    integral = (h / 2) * s
-    return integral
+    # رسم المنحنى الأساسي للدالة
+    plt.plot(x, y, 'r', label='f(x) = x^2')
+    
+    # رسم أشباه المنحرفات وتظليلها
+    x_trap = np.linspace(a, b, n+1)
+    y_trap = f(x_trap)
+    plt.fill_between(x_trap, y_trap, color='skyblue', alpha=0.4, label='Trapezoidal Area')
+    
+    # إضافة العناوين
+    plt.title(f'Trapezoidal Rule (n={n})')
+    plt.xlabel('x')
+    plt.ylabel('f(x)')
+    plt.legend()
+    
+    # --- السطر السحري للحفظ ---
+    plt.savefig('Unit3_Integration/trapezoid_result.png') 
+    
+    plt.show()
 
-# تجربة الكود: تكامل x^2 من 0 إلى 1 بـ 10 تقسيمات
-result = trapezoidal_rule(0, 1, 10)
-print(f"نتيجة التكامل التقريبية هي: {result}")
+# تشغيل الكود
+plot_trapezoidal(0, 1, 10)

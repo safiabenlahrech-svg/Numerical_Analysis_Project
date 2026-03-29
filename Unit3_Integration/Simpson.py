@@ -1,15 +1,17 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import math
+
 
 # إنشاء المجلد إذا لم يكن موجوداً لضمان عدم حدوث خطأ
 folder = 'Unit3_Integration'
 if not os.path.exists(folder):
     os.makedirs(folder)
 
-# 1. تعريف الدالة المراد تكاملها (مثلاً f(x) = x^2)
+# 1. تعريف الدالة المراد تكاملها (مثلاً f(x) = exp(x)
 def f(x):
-    return x**2
+    return np.exp(x)
 
 def simpson_full_project(a, b, n):
     # سيمبسون يتطلب n زوجي
@@ -30,7 +32,7 @@ def simpson_full_project(a, b, n):
     y_curve = f(x_curve)
     
     plt.figure(figsize=(8, 5))
-    plt.plot(x_curve, y_curve, 'r', label='f(x) = x^2', linewidth=2)
+    plt.plot(x_curve, y_curve, 'r', label='f(x) = exp(x)', linewidth=2)
     
     # تظليل المساحة (تقريب سيمبسون)
     plt.fill_between(x, y, color='skyblue', alpha=0.4, label='Simpson Area')

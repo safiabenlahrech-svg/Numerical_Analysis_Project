@@ -1,8 +1,8 @@
-def f(x):
+import math
+def f(x): 
     # تعريف الدالة: يمكنك تغييرها حسب المسألة
-    return x**2 - 2 
-
-def bisection_method(a, b, tol, max_iter):
+    return x**2 - 2
+def methode_dichotomie(a, b, tol, max_iter):
     # التحقق من شرط الإشارة
     if f(a) * f(b) >= 0:
         print("f(a) * f(b) must be negative")
@@ -26,11 +26,11 @@ def bisection_method(a, b, tol, max_iter):
             b = c
         else:
             a = c
-            
+
             # التعديل هنا: إذا خرجنا من الحلقة بلا ما يتحقق شرط error < tol
     print("\nتنبيه: تم الوصول للحد الأقصى من الدورات دون تحقيق الدقة المطلوبة.")
     return c
 
 # تشغيل الطريقة
-result = bisection_method(1, 2, 0.0001, 20)
+result = methode_dichotomie(1, 2, 0.0001, 20)
 print(f"\nالنتيجة النهائية: {result}")

@@ -2,15 +2,15 @@ import math
 def f(x): 
     # تعريف الدالة: يمكنك تغييرها حسب المسألة
     return x**2 - 2
-def methode_dichotomie(a, b, tol, max_iter):
+def methode_dichotomie(a, b, E, N ):
     # التحقق من شرط الإشارة
-    if f(a) * f(b) >= 0:
-        print("f(a) * f(b) must be negative")
+    if f(a) * f(b) > 0:
+        print(" لا يوجد حل في هذا المجال")
         return None
 
     print(f"{'Iter':<10} | {'x':<15} | {'Error':<15}")
     
-    for i in range(1, max_iter + 1):
+    for i in range(1, N + 1):
         c = (a + b) / 2
         error = abs(b - a) / 2
         

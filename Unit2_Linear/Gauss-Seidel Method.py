@@ -10,7 +10,7 @@ def gauss_elimination(A, b):
     # نستخدم float لضمان دقة الحسابات العشرية
     Ab = np.concatenate((A, b.reshape(n, 1)), axis=1).astype(float)
 
-    print("--- مرحلة الرفع إلى الصيغة المثلثية العلوية ---")
+    print("--- Stage of raising to upper triangular form---")
     for i in range(n):
         # البحث عن أكبر عنصر في العمود (Pivot) لزيادة الاستقرار العددي
         max_row = np.argmax(abs(Ab[i:, i])) + i
@@ -24,10 +24,10 @@ def gauss_elimination(A, b):
             factor = Ab[j, i] / Ab[i, i]
             Ab[j, i:] = Ab[j, i:] - factor * Ab[i, i:]
     
-    print("المصفوفة بعد الحذف:")
+    print("Matrix after deleting:")
     print(Ab)
 
-    print("\n--- مرحلة التعويض الرجوعي ---")
+    print("\n--- Retroactive compensation stage ---")
     x = np.zeros(n)
     for i in range(n - 1, -1, -1):
         x[i] = (Ab[i, n] - np.dot(Ab[i, i+1:n], x[i+1:n])) / Ab[i, i]
@@ -49,4 +49,4 @@ vector_b = np.array([1, -2, 0])
 solution = gauss_elimination(matrix_A, vector_b)
 
 if solution is not None:
-    print("\nالحل التقريبي للمتغيرات")
+    print("\n The approximate solution for the variable")

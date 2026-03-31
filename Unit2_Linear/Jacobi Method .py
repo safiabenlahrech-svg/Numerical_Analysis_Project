@@ -15,7 +15,7 @@ def jacobi_method(A, b, x0, tol=1e-6, max_iter=100):
     R = A - np.diag(diag)
     
     print("-" * 60)
-    print(f"{'التكرار':<10} | {'الحل التقريبي':<35} | {'الخطأ':<10}")
+    print(f"{'Iteration':<10} | {'Approximate Solution':<35} | {'Error':<10}")
     print("-" * 60)
     
     for k in range(max_iter):
@@ -31,7 +31,7 @@ def jacobi_method(A, b, x0, tol=1e-6, max_iter=100):
         # شرط التوقف (الدقة المطلوبة)
         if error < tol:
             print("-" * 60)
-            print("تم الوصول إلى الدقة المطلوبة بنجاح.")
+            print("The required accuracy has been successfully achieved.")
             return x_new, k + 1
             
         x = x_new.copy()
@@ -52,5 +52,5 @@ initial_x = np.zeros(len(b_vec))
 # استدعاء الدالة
 final_solution, iters = jacobi_method(A_mat, b_vec, initial_x)
 
-print("\nالحل النهائي للمتغيرات:")
+print("\n The final solution for the variables:")
 print(final_solution)

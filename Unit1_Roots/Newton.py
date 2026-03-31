@@ -40,7 +40,7 @@ def newton_method(x0, tol, max_iter):
         # شرط التوقف بناءً على الدقة المطلوبة
         if error < tol:
             print("-" * 55)
-            print(f"تم إيجاد الحل التقريبي: {x_new:.8f}")
+            print(f"Approximate solution found: {x_new:.8f}")
             return x_new
             
         x = x_new
